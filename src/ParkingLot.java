@@ -42,7 +42,7 @@ public class ParkingLot {
         return largeSlots;
     }
 
-    public Slot getAvailableSlot(Vehicle vehicle) {
+    public synchronized Slot getAvailableSlot(Vehicle vehicle) {
         //System.out.print(slotsStatus);
         for (Map.Entry<Slot, Vehicle> entry : slotsStatus.entrySet()) {
             if (entry.getValue() == null && entry.getKey().canFit(vehicle)) {

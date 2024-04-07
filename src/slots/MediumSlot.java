@@ -1,10 +1,15 @@
+package slots;
+
+import vehicles.*;
+
 public class MediumSlot extends Slot{
+    public static final String MEDIUM_SLOT_PREFIX = "M_";
     public MediumSlot(int slotNumber){
         super(slotNumber);
     }
     @Override
     public String getId(){
-        return "M_" + this.getSlotNumber();
+        return MEDIUM_SLOT_PREFIX + this.getSlotNumber();
     }
 
     @Override

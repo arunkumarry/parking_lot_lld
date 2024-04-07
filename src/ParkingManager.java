@@ -1,5 +1,11 @@
+import vehicles.Vehicle;
+import slots.*;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ParkingManager {
     ParkingLot parkingLot;
+    private static Map<String, Vehicle> vehicleMap = new HashMap<>();
 
     public ParkingManager(int smallSlots, int mediumSlots, int largeSlots){
         this.parkingLot = new ParkingLot(smallSlots, mediumSlots, largeSlots);
@@ -9,11 +15,12 @@ public class ParkingManager {
         Slot slot = this.assignSlotToVehicle(vehicle);
         if(slot == null) return;
         parkingLot.addCarToSlot(slot, vehicle);
+        vehicleMap.put(vehicle.getPlate(), vehicle);
         System.out.println("Your car - " + vehicle.getPlate() + " is parked in slot - "+slot.getId());
     }
 
     public void carExit(String plate){
-        Vehicle vehicle = Vehicle.getVehicle(plate);
+        Vehicle vehicle = getVehicle(plate);
         if(vehicle == null){
             System.out.println("Vehicle not present");
             return;
@@ -38,6 +45,10 @@ public class ParkingManager {
 
     public void getCurrentStatus(){
         parkingLot.getSlotsStatus();
+    }
+
+    public Vehicle getVehicle(String plate) {
+        return vehicleMap.get(plate);
     }
 
     public static class NoAvailableSlotException extends RuntimeException {

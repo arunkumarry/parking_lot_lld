@@ -1,4 +1,6 @@
 import java.util.*;
+import vehicles.Vehicle;
+import slots.*;
 
 public class ParkingLot {
     private int smallSlots;

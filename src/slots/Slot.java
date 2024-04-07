@@ -1,3 +1,7 @@
+package slots;
+
+import vehicles.Vehicle;
+
 public abstract class Slot {
     private int slotNumber;
 
